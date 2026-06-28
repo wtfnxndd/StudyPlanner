@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Subject
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Subject</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>Subject Name</label>
+
+        <input
+            type="text"
+            name="subject"
+            class="form-control"
+            value="{{ subject.subject_name }}"
+            required>
+    </div>
+
+    <button class="btn btn-success">
+        Update Subject
+    </button>
+
+    <a href="/subjects" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

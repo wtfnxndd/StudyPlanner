@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Study Plan
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Study Plan</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label class="form-label">Subject</label>
+
+<select name="subject_id" class="form-select">
+
+{% for subject in subjects %}
+
+<option
+value="{{ subject.id }}"
+{% if subject.id == plan.subject_id %}selected{% endif %}>
+
+{{ subject.subject_name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-3">
+<label>Date</label>
+
+<input
+type="date"
+name="study_date"
+class="form-control"
+value="{{ plan.study_date }}"
+required>
+
+</div>
+
+<div class="mb-3">
+<label>Time</label>
+
+<input
+type="time"
+name="study_time"
+class="form-control"
+value="{{ plan.study_time }}"
+required>
+
+</div>
+
+<div class="mb-3">
+<label>Duration</label>
+
+<input
+type="text"
+name="duration"
+class="form-control"
+value="{{ plan.duration }}"
+required>
+
+</div>
+
+<div class="mb-3">
+<label>Notes</label>
+
+<textarea
+name="notes"
+class="form-control">{{ plan.notes }}</textarea>
+
+</div>
+
+<button class="btn btn-success">
+Update Study Plan
+</button>
+
+<a href="/study_plans"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+{% endblock %}

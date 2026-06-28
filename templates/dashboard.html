@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        Welcome, {{ name }} 👋
+    </h2>
+
+    <!-- Statistics -->
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow">
+
+                <div class="card-body">
+
+                    <h5>Total Subjects</h5>
+
+                    <h2 class="text-primary">
+                        {{ stats.subjects }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow">
+
+                <div class="card-body">
+
+                    <h5>Study Plans</h5>
+
+                    <h2 class="text-success">
+                        {{ stats.study_plans }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow">
+
+                <div class="card-body">
+
+                    <h5>Completed Plans</h5>
+
+                    <h2 class="text-info">
+                        {{ stats.completed_plans }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-center shadow">
+
+                <div class="card-body">
+
+                    <h5>Total Tasks</h5>
+
+                    <h2 class="text-warning">
+                        {{ stats.tasks }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Progress -->
+
+    {% set completed = stats.completed_plans + stats.completed_tasks %}
+    {% set total = stats.study_plans + stats.tasks %}
+
+    {% if total > 0 %}
+        {% set percentage = ((completed / total) * 100)|round %}
+    {% else %}
+        {% set percentage = 0 %}
+    {% endif %}
+
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+
+            <h5>Overall Progress</h5>
+
+            <div class="progress" style="height:30px;">
+
+                <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: {{ percentage }}%;">
+
+                    {{ percentage }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modules -->
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>📚</h2>
+
+                    <h5>Subjects</h5>
+
+                    <p>Manage your subjects.</p>
+
+                    <a href="/subjects"
+                       class="btn btn-primary">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>📅</h2>
+
+                    <h5>Study Planner</h5>
+
+                    <p>Manage study schedules.</p>
+
+                    <a href="/study_plans"
+                       class="btn btn-success">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>✅</h2>
+
+                    <h5>Daily Tasks</h5>
+
+                    <p>Manage your daily tasks.</p>
+
+                    <a href="/tasks"
+                       class="btn btn-info">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h2>🚪</h2>
+
+                    <h5>Logout</h5>
+
+                    <p>Sign out safely.</p>
+
+                    <a href="/logout"
+                       class="btn btn-danger">
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
