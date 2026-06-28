@@ -5,13 +5,14 @@ A web-based Study Planner developed using python, Flask, SQLite, HTML, CSS, and 
 ---
 
 Features
- User Authentication
-
+* User Authentication
 * User Registration
 * User Login
 * Secure Session Management
 * Logout
- Subject Management
+
+  
+Subject Management
 
 * Add Subjects
 * View Subjects
@@ -41,8 +42,8 @@ Study Planner
 * Total Tasks
 * Progress Statistics
 
----
- Technologies Used
+
+Technologies Used
 
 * Python 3
 * Flask
